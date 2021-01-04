@@ -9,15 +9,14 @@ module Data.Vault.Internal
   , delete
   ) where
 
-import Control.Monad.Eff (Eff)
+import Effect (Effect)
 import Data.Function.Uncurried as Fn
 import Data.Maybe (Maybe)
 
-foreign import data Unique :: Type
+data Unique
+data UniqueMap (a :: Type)
 
-foreign import newUnique :: forall eff. Eff eff Unique
-
-foreign import data UniqueMap :: Type -> Type
+foreign import newUnique :: Effect Unique
 
 foreign import empty :: forall a. UniqueMap a
 
